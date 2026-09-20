@@ -316,15 +316,8 @@ function containsSubstring(str, substring) {
  *   countVowels('XYZ') => 1
  */
 function countVowels(str) {
-  let count = 0;
-  const vowels = 'aeiouyAEIOUY'
-
-  for(const char of str) {
-    if(vowels.includes(char)) {
-      count += 1;
-    }
-  }
-  return count;
+  const vowels = 'aeiouyAEIOUY';
+  return [...str].filter((char) => vowels.includes(char)).length;
 }
 
 /**
@@ -341,8 +334,8 @@ function countVowels(str) {
  *   isPalindrome('No lemon, no melon') => true
  */
 function isPalindrome(str) {
-  const startStr = str.toLowerCase().replaceAll(/[^a-z0-9]/g,'');
-  const reversedStr = str.split('').reverse().join(''); 
+  const startStr = str.toLowerCase().replaceAll(/[^a-z0-9]/g, '');
+  const reversedStr = str.split('').reverse().join('');
   return startStr === reversedStr;
 }
 
@@ -359,15 +352,13 @@ function isPalindrome(str) {
  *   findLongestWord('No words here') => 'words'
  */
 function findLongestWord(sentence) {
-  sentence.split(' ');
-  let longestWord = '';
-
-  for(const word of words) {
-    if(word.length > longestWord.length) {
-      longestWord = word;
-    }
-  }
-  return longestWord;
+  return sentence
+    .split(' ')
+    .reduce(
+      (longest, current) =>
+        current.length > longest.length ? current : longest,
+      ''
+    );
 }
 
 /**
@@ -381,7 +372,10 @@ function findLongestWord(sentence) {
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
 function reverseWords(str) {
-  return str.split(' ').map((word) => word.split('').reverse().join('')).join(' ');
+  return str
+    .split(' ')
+    .map((word) => word.split('').reverse().join(''))
+    .join(' ');
 }
 
 /**
@@ -396,7 +390,12 @@ function reverseWords(str) {
  *   invertCase('12345') => '12345'
  */
 function invertCase(str) {
-  return str.split('').map((char) => (char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase())).join('');
+  return str
+    .split('')
+    .map((char) =>
+      char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase()
+    )
+    .join('');
 }
 
 /**
