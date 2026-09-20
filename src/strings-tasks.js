@@ -197,7 +197,7 @@ function sumOfCodes(str) {
   }
 
   let sum = 0;
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     sum += str.charCodeAt(i);
   }
   return sum;
@@ -263,7 +263,7 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(str) {}
+function reverseString(/* str */) {}
 
 /**
  * Returns a string with characters in alphabetical order.
